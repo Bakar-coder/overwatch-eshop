@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 require('express-async-errors');
 const express = require('express');
 const { sequelize } = require('./utils/database');
@@ -15,6 +15,7 @@ const winston = require('winston');
 const port = process.env.PORT || 5000;
 const app = express();
 
+process.on('uncaughtException', ex => winston.error(ex.message, ex));
 
 // =======================================================================================//
 //                                  Checking for secretKey
@@ -34,7 +35,11 @@ const accessLogStream = fs.createWriteStream(
   }
 );
 
-winston.add(winston.transports.File, { filename: 'logfile.log' });
+winston.add(winston.transports.File, {
+  filename: 'logfile.log',
+  handleExceptions: true,
+  humanReadableUnhandledException: true
+});
 
 // =======================================================================================//
 //                               import all api routes
