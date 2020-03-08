@@ -1,0 +1,201 @@
+@import './fonts';
+@import './mixins';
+@import './utils';
+@import './form';
+@import './navbar';
+@import './card';
+@import './button';
+@import './carousel';
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  color: $grey;
+  background: $white;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+
+  & #root {
+    height: 100%;
+  }
+
+  & ul {
+    list-style-type: none;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & img {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  & form {
+    background: $white;
+  }
+
+  & button {
+    border: none;
+    outline: none;
+  }
+
+  & textarea {
+    font-family: inherit;
+    font-size: 1.4rem;
+  }
+
+  & input[type='file'] {
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+
+    &::-webkit-file-upload-button {
+      background: $black;
+      padding: 1.6rem 2.4rem;
+      color: $white;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include respond(phone) {
+    padding: 0;
+  }
+}
+
+.heading-one {
+  font-size: 4.8rem;
+}
+
+.btn,
+a {
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-size: inherit;
+  }
+}
+
+.btn {
+  outline: none;
+  transition: all 0.1s cubic-bezier(0.8, -0.37, 0, 1.39);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:active {
+    transform: scale(1.02);
+  }
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-warning {
+  color: $warning;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 0 1em;
+
+  @include respond(phone) {
+    padding: 0;
+  }
+
+  &-top {
+    padding-top: 10rem;
+  }
+}
+
+.alert {
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+  position: fixed;
+  top: 6.5rem;
+  right: 0;
+  max-width: 100%;
+  max-height: 20%;
+  z-index: 300;
+  transition: transform 0.3s ease-in-out;
+
+  &-danger {
+    background: $danger;
+    color: $white;
+  }
+
+  &-success {
+    background: $success;
+    color: $white;
+  }
+
+  &-warning {
+    background: $warning;
+    color: $greyDarker;
+  }
+}
+
+.noPage {
+  @include absCenter();
+
+  & img {
+    width: 100%;
+  }
+
+  & p {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,13 @@
+export const LOGIN_USER = 'LOGIN_USER';
+export const SET_CURRENT = 'SET_CURRENT';
+export const REMOVE_CURRENT = 'REMOVE_CURRENT';
+export const GET_USER = 'GET_USER';
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const SET_ERROR = 'SET_ERROR';
+export const REMOVE_ERROR = 'REMOVE_ERROR';

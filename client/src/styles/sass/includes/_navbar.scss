@@ -1,0 +1,203 @@
+.active {
+  color: $danger !important;
+}
+
+.navbar {
+  box-shadow: $boxShadow;
+  height: 10vh;
+  z-index: 198;
+  background: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    & .menu {
+      font-size: inherit;
+      font-size: 4.2rem;
+      cursor: pointer;
+      display: none;
+
+      &:hover {
+        color: $danger;
+      }
+    }
+
+    & .list-group {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
+      & .list-item {
+        & a {
+          color: $greyDarker;
+        }
+
+        & .btn {
+          color: $white;
+
+          &:hover {
+            color: $white;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          & a {
+            color: $white;
+          }
+        }
+
+        &:hover > a {
+          color: $danger;
+          width: 100%;
+        }
+
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  display: none;
+  background: $white;
+  text-align: left;
+  height: 100%;
+  box-shadow: $boxShadow;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+
+  z-index: 200;
+
+  &-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: all 0.3s ease-in;
+  }
+
+  & .nav-header {
+    width: 100%;
+    height: 30%;
+    background-image: url('../../images/banner1.jfif');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    border-bottom: 0.6rem solid $danger;
+  }
+
+  & .list-group {
+    display: block;
+
+    & .list-item {
+      line-height: 6rem;
+      width: 100%;
+      padding-left: 2em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+      & a {
+        color: $primary;
+      }
+
+      &:hover {
+        background: $danger;
+        cursor: pointer;
+
+        & a {
+          color: $white;
+        }
+      }
+
+      &:hover > a {
+        color: $white;
+        width: 100%;
+      }
+    }
+  }
+  transition: transform 0.3s ease-out;
+  -webkit-transition: transform 0.3s ease-out;
+  -moz-transition: transform 0.3s ease-out;
+  -ms-transition: transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
+}
+
+.back-drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 199;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba($grey, 0.3);
+  transition: all 0.3s ease-in;
+
+  &-open {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in;
+  }
+}
+
+@include respond(desktop) {
+  .navbar {
+    padding: 0 2em;
+  }
+}
+
+@include respond(tab-land) {
+  .navbar {
+    padding: 0 2em;
+  }
+}
+
+@include respond(tab-port) {
+  .navbar {
+    padding: 0 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $white;
+    box-shadow: $boxShadow;
+
+    &-content {
+      & .menu {
+        display: block;
+      }
+
+      & .list-group {
+        display: none;
+      }
+    }
+  }
+
+  .side-nav,
+  .back-drop {
+    display: block;
+  }
+}
+
+@include respond(phone) {
+  .navbar {
+    padding: 0 1em;
+  }
+}

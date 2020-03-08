@@ -1,0 +1,31 @@
+//color-variables
+$defaultBlue: #0b1728;
+$lightBlue: #01bbbf;
+$defaultOrange: #f29518;
+$grey: #777;
+$greyDarker: #555;
+$greyDark: #333;
+$light: #f8f8f8;
+$white: #ffffff;
+$primary: #4e53d6;
+$danger: #e91e63;
+$success: #00c9a7;
+$warning: #ffc107;
+$black: #000;
+$dark: #344055;
+$darker: #2b3544;
+
+$boxShadow: 0px 0px 35px 0px rgba(140, 152, 164, 0.125);
+$shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+
+//screen-breakpoints-variables
+$breakpoint-sm: 36em;
+$breakpoint-md: 48em;
+$breakpoint-lg: 62em;
+$breakpoint-xl: 75em;
+$breakpoint-xxl: 112.5em;
+
+//grid-variables
+$grid-width: 120rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;

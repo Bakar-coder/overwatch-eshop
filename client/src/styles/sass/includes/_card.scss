@@ -1,0 +1,102 @@
+.card {
+  box-shadow: $shadow;
+  height: 38rem;
+  position: relative;
+  background: $white;
+
+  &--image {
+    width: 100%;
+    height: 65%;
+    background: #f0f0f0;
+    text-align: center;
+    position: relative;
+
+    & img {
+      height: 100%;
+    }
+  }
+
+  &--content {
+    padding: 2rem;
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+
+    & .submit-btns {
+      & .btn--outline {
+        margin-right: 0.5rem;
+      }
+    }
+
+    & h3 {
+      color: $greyDark;
+    }
+
+    & h4 {
+      color: $danger;
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+
+    & div {
+      display: flex;
+
+      & .btn {
+        padding: 0.8rem 0.8rem;
+        border-radius: 4px;
+        font-size: 1.4rem;
+
+        &:not(:last-child) {
+          margin-right: 0.5rem;
+        }
+
+        &--primary {
+          border: 1px solid $primary;
+          background: $primary;
+          color: $white;
+
+          & a {
+            color: $white;
+          }
+
+          &:hover,
+          &:focus {
+            border: 1px solid $success;
+            background: $success;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+
+        &--outline {
+          border: 1px solid $danger;
+          background: $white;
+          color: $danger;
+
+          &:hover,
+          &:focus {
+            border: 1px solid $black;
+            background: $black;
+            color: $white;
+
+            & a {
+              color: $white;
+            }
+          }
+
+          & a {
+            color: $danger;
+          }
+        }
+
+        &--danger {
+          background: $danger;
+          color: $white;
+        }
+      }
+    }
+  }
+}
