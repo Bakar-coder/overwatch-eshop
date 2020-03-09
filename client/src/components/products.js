@@ -1,19 +1,30 @@
 import React from 'react';
 import Product from './product';
 import { connect } from 'react-redux';
+import { addToCart } from '../state/actions';
+import { bindActionCreators } from 'redux';
 
-const Products = ({ products }) => {
+const Products = ({ auth, products, addToCart }) => {
   return products ? (
     <main className='section' style={{ paddingTop: '4.5rem' }}>
       <div className='grid'>
         {products.map(product => (
-          <Product product={product} key={product.id} />
+          <Product
+            product={product}
+            key={product.id}
+            addToCart={addToCart}
+            auth={auth}
+          />
         ))}
       </div>
     </main>
   ) : null;
 };
 
-const mapState = ({ products }) => ({ products: products.products });
+const mapState = ({ auth, products }) => ({
+  auth: auth.isAuth,
+  products: products.products
+});
+const mapDispatch = dispatch => bindActionCreators({ addToCart }, dispatch);
 
-export default connect(mapState, null)(Products);
+export default connect(mapState, mapDispatch)(Products);

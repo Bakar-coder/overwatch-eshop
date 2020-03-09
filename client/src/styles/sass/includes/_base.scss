@@ -4,6 +4,7 @@
 @import './form';
 @import './navbar';
 @import './card';
+@import './cart';
 @import './button';
 @import './carousel';
 
@@ -155,7 +156,7 @@ a {
   }
 
   &-top {
-    padding-top: 10rem;
+    padding-top: 7rem;
   }
 }
 

@@ -54,7 +54,7 @@ const Navbar = ({ user, logoutUser, history }) => {
             </li>
             <li className='list-item'>
               <Link
-                to={`/cart`}
+                to={user ? '/cart' : '/users/login'}
                 className={pathname === '/cart' ? 'active' : ''}>
                 <MdShoppingCart />
                 Cart

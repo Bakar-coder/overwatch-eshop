@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
 import Layout from './components/layouts/layouts';
 import { bindActionCreators } from 'redux';
-import { setCurrent, getProducts } from './state/actions';
+import { setCurrent, getProducts, getCart } from './state/actions';
 
-const App = ({ route, auth, alert, setCurrent, error, getProducts }) => {
+const App = ({
+  route,
+  auth,
+  alert,
+  setCurrent,
+  error,
+  getProducts,
+  getCart
+}) => {
   getProducts();
   setCurrent();
+  useEffect(() => {
+    auth && setTimeout(() => getCart(), 4000);
+  }, [auth, getCart]);
   return (
     <Layout>
       {alert && <div className='alert alert-success'>{alert}</div>}
@@ -17,12 +28,12 @@ const App = ({ route, auth, alert, setCurrent, error, getProducts }) => {
   );
 };
 
-function mapState({ alerts, errors }) {
-  return { alert: alerts.alert, error: errors.error };
+function mapState({ auth, alerts, errors }) {
+  return { alert: alerts.alert, error: errors.error, auth: auth.isAuth };
 }
 
 function mapDispatch(dispatch) {
-  return bindActionCreators({ setCurrent, getProducts }, dispatch);
+  return bindActionCreators({ setCurrent, getProducts, getCart }, dispatch);
 }
 
 export default {

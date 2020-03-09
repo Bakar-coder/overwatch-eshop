@@ -6,6 +6,7 @@ import AddProduct from './Pages/admin/add-product';
 import AdminProdocts from './Pages/admin/products';
 import EditProduct from './Pages/admin/edit-product';
 import SingleProduct from './Pages/shop/SingleProduct';
+import Cart from './Pages/shop/Cart';
 import PageNotFound from './Pages/404';
 
 const Routes = [
@@ -30,6 +31,11 @@ const Routes = [
       {
         ...SingleProduct,
         path: '/products/:title',
+        exact: true
+      },
+      {
+        ...Cart,
+        path: '/cart',
         exact: true
       },
       {
