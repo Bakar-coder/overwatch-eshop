@@ -3,7 +3,8 @@ const Router = require('express').Router();
 const {
   postAddProduct,
   postAdminEditProduct,
-  postAdminDeleteProduct
+  postAdminDeleteProduct,
+  getCart
 } = require('../../../controllers/admin/products');
 
 Router.route('/add-product').post(

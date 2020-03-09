@@ -30,19 +30,15 @@ exports.postRegister = async (req, res) => {
   let user = await User.findOne({ where: { email } });
   let u_name = await User.findOne({ where: { username } });
   if (user)
-    return res
-      .status(400)
-      .json({
-        success: false,
-        msg: 'user with the same email already exists.'
-      });
+    return res.status(400).json({
+      success: false,
+      msg: 'user with the same email already exists.'
+    });
   if (u_name)
-    return res
-      .status(400)
-      .json({
-        success: false,
-        msg: 'user with the same username already exists.'
-      });
+    return res.status(400).json({
+      success: false,
+      msg: 'user with the same username already exists.'
+    });
   user = new User({
     f_name,
     l_name,
@@ -54,7 +50,8 @@ exports.postRegister = async (req, res) => {
   });
   const salt = await bcrypt.genSalt(12);
   user.passwd = await bcrypt.hash(user.passwd, salt);
-  await user.save();
+  user = await user.save();
+  await user.createCart();
   return res.json({ success: true, msg: 'Registration successful.' });
 };
 

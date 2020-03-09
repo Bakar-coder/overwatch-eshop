@@ -18,13 +18,17 @@ exports.postAddProduct = async (req, res) => {
       .status(400)
       .json({ success: false, msg: 'Product image is required.' });
 
-  if (
-    image.mimetype !== 'image/jpeg' &&
-    image.mimetype !== 'image/jpg' &&
-    image.mimetype !== 'image/png' &&
-    image.mimetype !== 'image/gif' &&
-    image.mimetype !== 'image/jfif'
-  )
+  const mimetypes = [
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/gif',
+    'image/jfif'
+  ];
+
+  const validMimetype = mimetypes.filter(mime => mime === image.mimetype)[0];
+
+  if (!validMimetype)
     return res.status(400).json({
       success: false,
       msg: 'Unsupported file type uploaded. Only image files allowed.'
