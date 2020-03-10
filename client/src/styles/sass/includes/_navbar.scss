@@ -35,8 +35,14 @@
       align-items: center;
 
       & .list-item {
+
         & a {
           color: $greyDarker;
+        }
+
+        & .badge {
+          padding: .2rem 1rem !important;
+
         }
 
         & .btn {

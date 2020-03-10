@@ -13,14 +13,15 @@ const HomePage = () => {
         <div className='carousel__container'>
           <ul>
             <li className='carousel__slide'>
-              <img className='carousel__image' src={banner2} alt='banner2' />
-            </li>
-            <li className='carousel__slide'>
               <img className='carousel__image' src={banner1} alt='banner1' />
             </li>
 
             <li className='carousel__slide'>
               <img className='carousel__image' src={banner3} alt='banner3' />
+            </li>
+
+            <li className='carousel__slide'>
+              <img className='carousel__image' src={banner2} alt='banner2' />
             </li>
           </ul>
         </div>

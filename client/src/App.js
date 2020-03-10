@@ -16,9 +16,8 @@ const App = ({
 }) => {
   getProducts();
   setCurrent();
-  useEffect(() => {
-    auth && setTimeout(() => getCart(), 4000);
-  }, [auth, getCart]);
+  auth && getCart();
+
   return (
     <Layout>
       {alert && <div className='alert alert-success'>{alert}</div>}

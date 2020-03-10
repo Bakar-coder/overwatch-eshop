@@ -7,10 +7,14 @@ import { bindActionCreators } from 'redux';
 import { logoutUser } from '../../state/actions/authActions';
 import SideNav from './SideNav';
 
-const Navbar = ({ user, logoutUser, history }) => {
+const Navbar = ({ user, cart, logoutUser, history }) => {
   const { pathname } = history.location;
   const [state, setState] = React.useState({ isOpen: false });
   const { isOpen } = state;
+
+  const handleNavToggle = () => {
+    setState({ ...state, isOpen: !state.isOpen })
+  }
   return (
     <Fragment>
       <nav className='navbar'>
@@ -23,14 +27,14 @@ const Navbar = ({ user, logoutUser, history }) => {
           {!isOpen && (
             <IoMdMenu
               className='menu'
-              onClick={() => setState({ ...state, isOpen: !state.isOpen })}
+              onClick={() => handleNavToggle()}
             />
           )}
 
           {isOpen && (
             <IoMdClose
               className='menu'
-              onClick={() => setState({ ...state, isOpen: !state.isOpen })}
+              onClick={() => handleNavToggle()}
             />
           )}
 
@@ -57,7 +61,10 @@ const Navbar = ({ user, logoutUser, history }) => {
                 to={user ? '/cart' : '/users/login'}
                 className={pathname === '/cart' ? 'active' : ''}>
                 <MdShoppingCart />
-                Cart
+                Cart{' '}
+                {cart && cart.length > 0 && (
+                  <span className='badge badge-warning'>{cart.length}</span>
+                )}
               </Link>
             </li>
 
@@ -139,17 +146,20 @@ const Navbar = ({ user, logoutUser, history }) => {
         logoutUser={logoutUser}
         state={state}
         setState={setState}
+        pathname={pathname}
+        cart={cart}
+        handleNavToggle={handleNavToggle}
       />
       <div
         className={isOpen ? 'back-drop back-drop-open' : 'back-drop'}
-        onClick={() => setState({ ...state, isOpen: !state.isOpen })}
+        onClick={() => handleNavToggle()}
       />
     </Fragment>
   );
 };
 
-function mapStateToProps({ auth }) {
-  return { user: auth.user };
+function mapStateToProps({ auth, products }) {
+  return { user: auth.user, cart: products.cart };
 }
 
 function mapDIspatch(dispatch) {

@@ -3,7 +3,9 @@ import {
   getProducts,
   deleteProduct,
   addToCart,
-  getCart
+  getCart,
+  deleteCartItem,
+  productDeccrement
 } from './productsActions';
 import { add_Product, edit_Product } from './adminActions';
 export {
@@ -15,5 +17,7 @@ export {
   edit_Product,
   deleteProduct,
   addToCart,
-  getCart
+  getCart,
+  deleteCartItem,
+  productDeccrement
 };

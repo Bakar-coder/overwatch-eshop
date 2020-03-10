@@ -1,4 +1,12 @@
-import { GET_PRODUCTS, DELETE_PRODUCT, GET_CART } from '../types';
+import {
+  GET_PRODUCTS,
+  DELETE_PRODUCT,
+  GET_CART,
+  SET_CART,
+  DELETE_CART,
+  CART_PRODUCT_INCREMENT,
+  CART_PRODUCT_DECREMENT
+} from '../types';
 import setError from '../errorHandler';
 import setAlert from '../alertHandler';
 
@@ -24,7 +32,7 @@ export const deleteProduct = product => async (dispatch, getState, api) => {
 export const getCart = () => async (dispatch, getState, api) => {
   try {
     const { data } = await api.get('/api/cart');
-    dispatch({ type: GET_CART, payload: data.cartProducts });
+    dispatch({ type: GET_CART, payload: data.products });
   } catch (ex) {
     setError(ex, dispatch);
   }
@@ -37,9 +45,48 @@ export const addToCart = (product, history, auth) => async (
 ) => {
   try {
     let res;
-    if (auth) res = await api.post('/api/cart', product);
+    if (auth)  {
+      res = await api.post('/api/cart', product);
+      if (product.cartItem) {
+        product.cartItem.quantity += 1
+        return dispatch({ type: SET_CART, payload: product });
+      } else {
+        dispatch({ type: SET_CART, payload: res.data.products });
+        return history.push('/cart');
+      }
+    }
     else return history.push('/users/login');
-    console.log(res.data);
+
+
+  } catch (ex) {
+    setError(ex, dispatch);
+  }
+};
+
+export const productDeccrement = (product, history, auth) => async (
+  dispatch,
+  getState,
+  api
+) => {
+  try {
+    if (auth) {
+      if (product.cartItem.quantity < 2) return;
+      const { data } = await api.post('/api/cart/decrement', product);
+      product.cartItem.quantity -= 1
+      dispatch({ type: CART_PRODUCT_DECREMENT, payload: product });
+      history.push('/cart');
+    } else history.push('/users/login');
+  } catch (ex) {
+    setError(ex, dispatch);
+  }
+};
+
+export const deleteCartItem = cart => async (dispatch, getState, api) => {
+  try {
+    const { data } = await api.post('/api/cart/delete', cart);
+    if (data.success) {
+      dispatch({ type: DELETE_CART, payload: cart });
+    }
   } catch (ex) {
     setError(ex, dispatch);
   }

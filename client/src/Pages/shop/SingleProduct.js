@@ -1,16 +1,22 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import ProductDetails from '../../components/productDetails';
 import { connect } from 'react-redux';
+import { addToCart } from '../../state/actions';
+import { bindActionCreators } from 'redux';
 
-const SingleProduct = ({ products }) => {
+const SingleProduct = ({ products, auth, addToCart }) => {
   return (
     <section className='section section-top'>
-      <ProductDetails products={products} />
+      <ProductDetails products={products} addToCart={addToCart} auth={auth} />
     </section>
   );
 };
 
-const mapState = ({ products }) => ({ products: products.products });
+const mapState = ({ products, auth }) => ({
+  products: products.products,
+  auth: auth.isAuth
+});
 
-export default { component: connect(mapState, null)(SingleProduct) };
+const mapDispatch = dispatch => bindActionCreators({ addToCart }, dispatch);
+
+export default { component: connect(mapState, mapDispatch)(SingleProduct) };

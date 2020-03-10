@@ -11,9 +11,8 @@ export const registerUser = (user, history) => async (
 ) => {
   try {
     const { data } = await api.post('/api/users/register', user);
-    setAlert(data, dispatch);
-    setTimeout(() => history.replace('/users/login'), 3000);
-    return;
+    history.replace('/users/login'), 3000;
+    return setAlert(data, dispatch);
   } catch (ex) {
     console.log(ex);
     setError(ex, dispatch);
@@ -25,11 +24,8 @@ export const loginUser = user => async (dispatch, getState, api) => {
     const res = await api.post('/api/users/login', user);
     const token = res.headers['x-auth-token'];
     cookie.set('x-auth-token', token);
-    setAlert(res.data, dispatch);
-    setTimeout(() => {
-      window.location = '/';
-    }, 3000);
-    return;
+    window.location = '/';
+    return setAlert(res.data, dispatch);
   } catch (ex) {
     setError(ex, dispatch);
   }

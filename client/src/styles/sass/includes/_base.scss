@@ -188,6 +188,37 @@ a {
   }
 }
 
+.badge {
+  padding: .4rem 1rem;
+  font-size: inherit;
+  background: $light;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  &-dark {
+    color: $white;
+    background: $dark;
+  }
+
+  &-warning {
+    color: $black;
+    background: $warning;
+  }
+
+  &-primary {
+    color: $white;
+    background: $primary;
+  }
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 .noPage {
   @include absCenter();
 

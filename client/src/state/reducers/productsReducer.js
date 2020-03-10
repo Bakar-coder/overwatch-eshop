@@ -4,13 +4,16 @@ import {
   UPDATE_PRODUCT,
   DELETE_PRODUCT,
   GET_CART,
-  SET_CART
+  SET_CART,
+  DELETE_CART,
+  CART_PRODUCT_INCREMENT,
+  CART_PRODUCT_DECREMENT
 } from '../types';
 
 const errState = {
   product: null,
   products: null,
-  cart: null
+  cart: []
 };
 
 export default (state = errState, action) => {
@@ -22,11 +25,13 @@ export default (state = errState, action) => {
         ...state,
         products: payload
       };
+
     case GET_PRODUCT:
       return {
         ...state,
         product: null
       };
+
     case UPDATE_PRODUCT:
       return {
         ...state,
@@ -34,20 +39,35 @@ export default (state = errState, action) => {
           prod.id === payload.id ? payload : prod
         )
       };
+
     case DELETE_PRODUCT:
       return {
         ...state,
         products: [...state.products].filter(prod => prod.id !== payload.id)
       };
+
     case GET_CART:
       return {
         ...state,
         cart: payload
       };
+
     case SET_CART:
       return {
         ...state,
-        cart: [...state.cart].push(payload)
+        cart: state.cart.length === 0 ? payload : [...state.cart].map(item => item.id === payload.id ? payload : item)
+      };
+
+    case DELETE_CART:
+      return {
+        ...state,
+        cart: [...state.cart].filter(item => item.id !== payload.id)
+      };
+
+    case CART_PRODUCT_DECREMENT:
+      return {
+        ...state,
+        cart: [...state.cart].map(item => item.id === payload.id ? payload : item)
       };
     default:
       return state;

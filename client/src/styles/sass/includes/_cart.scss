@@ -1,11 +1,12 @@
 .cart {
-  max-width: 90%;
+  width: 95%;
   box-shadow: $shadow;
   padding: 2rem;
   margin: 3rem auto;
 
   @include respond(phone) {
-    max-width: 100%;
+    width: 100%;
+    padding: 2rem 0;
   }
 
   & .image-container {
@@ -19,19 +20,43 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 
   & thead {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   & th,
   & td {
     text-align: center;
     padding: 1.6rem;
+
+    @include respond(phone) {
+      padding: 0.2rem;
+    }
   }
 
   & th:first-child,
   & td:first-child {
     text-align: left;
+  }
+
+  & td {
+    @include respond(phone) {
+      padding-bottom: 3rem;
+    }
+  }
+
+  & td:last-child {
+    @include respond(phone) {
+      span {
+        margin-bottom: 1rem;
+      }
+      & .badge {
+        margin-right: 0;
+        padding: 0.4rem 1.2rem;
+        text-align: right;
+      }
+    }
   }
 }
