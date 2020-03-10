@@ -34,14 +34,14 @@ const Register = ({ registerUser, history }) => {
     <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
         <h3>Signup</h3>
-        <p className='text-primary'>Create a free account.</p>
+        <p className='text-warning'>Create a free account.</p>
       </div>
 
       <div className='grid-2'>
         <div className='form-group'>
           <input
             type='text'
-            className={f_name ? 'form-control text-primary' : 'form-control'}
+            className={f_name ? 'form-control text-warning' : 'form-control'}
             id='f_name'
             name='f_name'
             value={f_name}
@@ -57,7 +57,7 @@ const Register = ({ registerUser, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            className={l_name ? 'form-control text-primary' : 'form-control'}
+            className={l_name ? 'form-control text-warning' : 'form-control'}
             id='l_name'
             name='l_name'
             value={l_name}
@@ -79,7 +79,7 @@ const Register = ({ registerUser, history }) => {
               username && username.length < 3
                 ? 'form-control text-danger'
                 : username && username.length >= 3
-                ? 'form-control text-primary'
+                ? 'form-control text-warning'
                 : 'form-control'
             }
             id='username'
@@ -106,7 +106,7 @@ const Register = ({ registerUser, history }) => {
         <div className='form-group'>
           <input
             type='email'
-            className={email ? 'form-control text-primary' : 'form-control'}
+            className={email ? 'form-control text-warning' : 'form-control'}
             id='email'
             name='email'
             value={email}
@@ -129,7 +129,7 @@ const Register = ({ registerUser, history }) => {
               : passwd && passwd.length > 16
               ? 'form-control text-danger'
               : passwd
-              ? 'form-control text-primary'
+              ? 'form-control text-warning'
               : 'form-control'
           }
           id='passwd'
@@ -164,7 +164,7 @@ const Register = ({ registerUser, history }) => {
             passwd2 && passwd2 !== passwd
               ? 'form-control text-danger'
               : passwd2 && passwd2 === passwd
-              ? 'form-control text-primary'
+              ? 'form-control text-warning'
               : 'form-control'
           }
           id='passwd2'
@@ -192,7 +192,7 @@ const Register = ({ registerUser, history }) => {
       </button>
       <p>
         Already Registered? -{' '}
-        <Link to='/users/login' className='text-primary'>
+        <Link to='/users/login' className='text-warning'>
           SIGNIN.
         </Link>
       </p>

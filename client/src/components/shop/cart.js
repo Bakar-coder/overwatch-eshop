@@ -21,7 +21,7 @@ const Cart = ({
           <tr>
             <th>Image</th>
             <th>Title</th>
-            <th>Quantity</th>
+            <th>Qty</th>
             <th>Price</th>
             <th />
           </tr>
@@ -40,7 +40,7 @@ const Cart = ({
                 </td>
                 <td>{product.title}</td>
                 <td>{product.cartItem.quantity}</td>
-                <td>$ {product.price}</td>
+                <td>${product.price}</td>
 
                 <td>
                   <span

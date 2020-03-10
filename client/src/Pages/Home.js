@@ -12,9 +12,6 @@ const HomePage = () => {
         <button className='carousel__button carousel__button--left'></button>
         <div className='carousel__container'>
           <ul>
-            <li className='carousel__slide'>
-              <img className='carousel__image' src={banner1} alt='banner1' />
-            </li>
 
             <li className='carousel__slide'>
               <img className='carousel__image' src={banner3} alt='banner3' />
@@ -23,6 +20,11 @@ const HomePage = () => {
             <li className='carousel__slide'>
               <img className='carousel__image' src={banner2} alt='banner2' />
             </li>
+
+            <li className='carousel__slide'>
+              <img className='carousel__image' src={banner1} alt='banner1' />
+            </li>
+
           </ul>
         </div>
         <button className='carousel__button carousel__button--right'></button>

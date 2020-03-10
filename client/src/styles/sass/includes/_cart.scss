@@ -1,8 +1,8 @@
 .cart {
   width: 95%;
-  box-shadow: $shadow;
   padding: 2rem;
   margin: 3rem auto;
+  background: $dark-light;
 
   @include respond(phone) {
     width: 100%;
@@ -20,10 +20,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid $dark;
 
   & thead {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid $dark;
+  }
+
+  & th {
+    color: $warning;
   }
 
   & th,

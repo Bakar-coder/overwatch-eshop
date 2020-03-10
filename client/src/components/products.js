@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 const Products = ({ auth, products, addToCart }) => {
   return products ? (
-    <main className='section' style={{ paddingTop: '4.5rem' }}>
+    <main className='section' style={{ paddingTop: '5.5rem' }}>
       <div className='grid'>
         {products.map(product => (
           <Product

@@ -98,7 +98,7 @@ const Navbar = ({ user, cart, logoutUser, history }) => {
               <li
                 className='list-item'
                 style={{
-                  borderLeft: '2px solid rgba(0,0,0,0.5)',
+                  borderLeft: '2px solid #ffc107',
                   paddingLeft: '1rem'
                 }}>
                 <Link

@@ -4,13 +4,14 @@
   max-width: 70rem;
   margin: 2em auto;
   padding: 4rem;
-  box-shadow: 0 1rem 2rem 0 rgba($primary, 0.2);
+  background: $dark-light;
+  // box-shadow: 0 1rem 2rem 0 rgba($primary, 0.2);
 
   @include respond(tab-port) {
     text-align: left;
 
     & > p {
-      margin-left: 4rem !important;
+      margin-left: 4rem;
     }
   }
 
@@ -33,7 +34,7 @@
     font-size: 1.4rem;
     padding: 1.2rem 1rem;
     border: none;
-    background: $white;
+    background: $dark;
     border-bottom: 1px solid rgba($grey, 0.5);
     color: inherit;
 
@@ -51,6 +52,11 @@
   &-btn {
     border: none;
     padding: 1.4rem 3rem !important;
+
+    @include respond(phone) {
+      width: 100%;
+      margin-bottom: 2rem;
+    };
   }
 
   &-label {
@@ -61,6 +67,12 @@
   & > p {
     display: inline-block;
     margin-left: 7.5rem;
+
+    @include respond(phone) {
+      margin: 0;
+      display: block;
+      text-align: center;
+    };
   }
   border-radius: 2rem;
   -webkit-border-radius: 2rem;

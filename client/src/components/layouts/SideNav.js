@@ -27,7 +27,7 @@ const SideNav = ({isOpen, user, logoutUser, state, setState, pathname, cart, han
         </li>
         <li className='list-item'>
           <Link onClick={() => handleNavToggle()}
-            to='/cart'
+            to={user ? '/cart': '/users/login'}
             className={pathname === '/cart' ? 'active' : ''}>
             <MdShoppingCart />
             Cart{' '}
@@ -95,7 +95,7 @@ const SideNav = ({isOpen, user, logoutUser, state, setState, pathname, cart, han
         )}
         {user && (
           <li className='list-item'>
-            <a  onClick={() => logoutUser()}>
+            <a  onClick={() => {handleNavToggle(), logoutUser()}}>
               Logout
             </a>
           </li>

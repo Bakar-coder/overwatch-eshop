@@ -2,7 +2,14 @@
   box-shadow: $shadow;
   height: 38rem;
   position: relative;
-  background: $white;
+  background: $dark-light;
+  border-radius: 1rem;
+  transition: transform .3s ease-in-out;
+
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &--image {
     width: 100%;
@@ -10,6 +17,7 @@
     background: #f0f0f0;
     text-align: center;
     position: relative;
+    border-radius: 1rem 1rem 0 0;
 
     & img {
       height: 100%;
@@ -32,12 +40,9 @@
       }
     }
 
-    & h3 {
-      color: $greyDark;
-    }
 
     & h4 {
-      color: $danger;
+      color: $warning;
       font-size: 1.8rem;
       font-weight: normal;
     }
@@ -72,23 +77,23 @@
         }
 
         &--outline {
-          border: 1px solid $danger;
-          background: $white;
-          color: $danger;
+          border: 1px solid $warning;
+          background: $dark-light;
+          color: $warning;
 
           &:hover,
           &:focus {
-            border: 1px solid $black;
-            background: $black;
-            color: $white;
+            border: 1px solid $warning;
+            background: $warning;
+            color: $black;
 
             & a {
-              color: $white;
+              color: $black;
             }
           }
 
           & a {
-            color: $danger;
+            color: $warning;
           }
         }
 

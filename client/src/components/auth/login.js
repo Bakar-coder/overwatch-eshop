@@ -22,13 +22,13 @@ const Login = ({ loginUser, history }) => {
     <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
         <h3>Signin</h3>
-        <p className='text-primary'>Sign into your account.</p>
+        <p className='text-warning'>Login your account.</p>
       </div>
 
       <div className='form-group'>
         <input
           type='email'
-          className={email ? 'form-control text-primary' : 'form-control'}
+          className={email ? 'form-control text-warning' : 'form-control'}
           id='email'
           name='email'
           value={email}
@@ -50,7 +50,7 @@ const Login = ({ loginUser, history }) => {
               : passwd && passwd.length > 16
               ? 'form-control text-danger'
               : passwd
-              ? 'form-control text-primary'
+              ? 'form-control text-warning'
               : 'form-control'
           }
           id='passwd'
@@ -83,7 +83,7 @@ const Login = ({ loginUser, history }) => {
       </button>
       <p>
         Not registered? -{' '}
-        <Link to='/users/register' className='text-primary'>
+        <Link to='/users/register' className='text-warning'>
           SIGNUP.
         </Link>
       </p>
