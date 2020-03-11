@@ -6,14 +6,17 @@ import {
   GET_CART,
   SET_CART,
   DELETE_CART,
-  CART_PRODUCT_INCREMENT,
-  CART_PRODUCT_DECREMENT
+  CART_PRODUCT_DECREMENT,
+  SET_TOTAL_AMOUNT,
+  SET_ORDERS
 } from '../types';
 
 const errState = {
   product: null,
   products: null,
-  cart: []
+  cart: [],
+  orders: [],
+  total: null
 };
 
 export default (state = errState, action) => {
@@ -55,7 +58,12 @@ export default (state = errState, action) => {
     case SET_CART:
       return {
         ...state,
-        cart: state.cart.length === 0 ? payload : [...state.cart].map(item => item.id === payload.id ? payload : item)
+        cart:
+          state.cart.length === 0
+            ? payload
+            : [...state.cart].map(item =>
+                item.id === payload.id ? payload : item
+              )
       };
 
     case DELETE_CART:
@@ -67,8 +75,21 @@ export default (state = errState, action) => {
     case CART_PRODUCT_DECREMENT:
       return {
         ...state,
-        cart: [...state.cart].map(item => item.id === payload.id ? payload : item)
+        cart: [...state.cart].map(item =>
+          item.id === payload.id ? payload : item
+        )
       };
+    case SET_TOTAL_AMOUNT:
+      return {
+        ...state,
+        total: payload
+      };
+      case SET_ORDERS:
+        return {
+          ...state,
+          orders: payload
+        }
+
     default:
       return state;
   }

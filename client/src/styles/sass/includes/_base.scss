@@ -78,16 +78,20 @@ body {
   }
 
   & input[type='file'] {
-    padding-bottom: 0 !important;
-    padding-left: 0 !important;
+    padding: 0;
 
     &::-webkit-file-upload-button {
-      background: $black;
-      padding: 1.6rem 2.4rem;
-      color: $white;
+      background: $warning;
+      padding: 1.2rem 1.8rem;
+      color: $black;
       border: none;
       outline: none;
       cursor: pointer;
+      border-radius: 0 3rem 3rem 0;
+      -webkit-border-radius: 0 3rem 3rem 0;
+      -moz-border-radius: 0 3rem 3rem 0;
+      -ms-border-radius: 0 3rem 3rem 0;
+      -o-border-radius: 0 3rem 3rem 0;
     }
   }
 
@@ -189,14 +193,11 @@ a {
 }
 
 .badge {
-  padding: .4rem 1rem;
+  padding: 0.25rem 1.2rem;
   font-size: inherit;
   background: $light;
   cursor: pointer;
 
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
 
   &-dark {
     color: $white;
@@ -212,11 +213,11 @@ a {
     color: $white;
     background: $primary;
   }
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 .noPage {

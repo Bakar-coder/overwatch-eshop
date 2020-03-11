@@ -5,8 +5,8 @@
   background: $dark-light;
 
   @include respond(phone) {
-    width: 100%;
-    padding: 2rem 0;
+    padding: 2em;
+    max-width: 98%;
   }
 
   & .image-container {
@@ -24,6 +24,9 @@ table {
 
   & thead {
     border-bottom: 1px solid $dark;
+    & > tr {
+      padding: 2em;
+    }
   }
 
   & th {
@@ -61,6 +64,28 @@ table {
         padding: 0.4rem 1.2rem;
         text-align: right;
       }
+    }
+  }
+}
+
+.order-sec {
+  width: 98%;
+  margin: 2rem auto auto auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include respond(phone) {
+    margin: 2em 1em;
+  }
+
+  & h4 {
+    font-weight: normal;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+    & span {
+      color: $warning;
     }
   }
 }

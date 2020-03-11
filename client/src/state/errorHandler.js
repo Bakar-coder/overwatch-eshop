@@ -16,6 +16,12 @@ export default (ex, dispatch) => {
         ? 'Server Error: Internal Server Error!'
         : 'Internal Server Error,  Try again later and if this persists contact support.'
     });
+  } else if (ex && ex.status === 401) {
+    setTimeout(() => removeError(), 3000);
+    dispatch({
+      type: SET_ERROR,
+      payload: 'ACCESS DENIED! - LOGIN TO CONTINUE.'
+    });
   } else {
     setTimeout(() => removeError(), 3000);
     dispatch({

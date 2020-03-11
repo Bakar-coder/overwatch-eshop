@@ -34,13 +34,13 @@ const AddProduct = ({ add_Product, history }) => {
     <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
         <h3>Add A Product</h3>
-        <p className='text-primary'>Create a Product</p>
+        <p className='text-warning'>Create a Product</p>
       </div>
 
       <div className='form-group'>
         <input
           type='text'
-          className={title ? 'form-control text-primary' : 'form-control'}
+          className={title ? 'form-control text-warning' : 'form-control'}
           id='title'
           name='title'
           value={title}
@@ -66,7 +66,7 @@ const AddProduct = ({ add_Product, history }) => {
       <div className='form-group'>
         <textarea
           type='text'
-          className={description ? 'form-control text-primary' : 'form-control'}
+          className={description ? 'form-control text-warning' : 'form-control'}
           id='description'
           name='description'
           value={description}
@@ -83,7 +83,7 @@ const AddProduct = ({ add_Product, history }) => {
       <div className='form-group'>
         <input
           type='text'
-          className={price ? 'form-control text-primary' : 'form-control'}
+          className={price ? 'form-control text-warning' : 'form-control'}
           id='price'
           name='price'
           value={price}

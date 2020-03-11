@@ -33,7 +33,7 @@ const Register = ({ registerUser, history }) => {
   return (
     <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
-        <h3>Signup</h3>
+        <h3>Sign up</h3>
         <p className='text-warning'>Create a free account.</p>
       </div>
 
@@ -191,9 +191,9 @@ const Register = ({ registerUser, history }) => {
         Register
       </button>
       <p>
-        Already Registered? -{' '}
+        Already Registered ?{' '}
         <Link to='/users/login' className='text-warning'>
-          SIGNIN.
+          LOGIN
         </Link>
       </p>
     </form>

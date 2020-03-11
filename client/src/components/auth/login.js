@@ -21,7 +21,7 @@ const Login = ({ loginUser, history }) => {
   return (
     <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
-        <h3>Signin</h3>
+        <h3>Sign in</h3>
         <p className='text-warning'>Login your account.</p>
       </div>
 
@@ -82,9 +82,9 @@ const Login = ({ loginUser, history }) => {
         Login
       </button>
       <p>
-        Not registered? -{' '}
+        Not yet registered ? {'  '}
         <Link to='/users/register' className='text-warning'>
-          SIGNUP.
+          REGISTER
         </Link>
       </p>
     </form>

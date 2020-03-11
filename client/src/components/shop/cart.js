@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 const Cart = ({
   cart,
   auth,
+  total,
+  submitOrder,
   deleteCartItem,
   productDeccrement,
   addToCart,
@@ -14,6 +16,11 @@ const Cart = ({
     productDeccrement(product, history, auth);
   };
 
+  const handleOrder = () => {
+    submitOrder(history);
+  };
+
+  console.log(total);
   return (
     <div className='cart'>
       <table>
@@ -40,11 +47,11 @@ const Cart = ({
                 </td>
                 <td>{product.title}</td>
                 <td>{product.cartItem.quantity}</td>
-                <td>${product.price}</td>
+                <td>{product.price}</td>
 
                 <td>
                   <span
-                    className='badge badge-dark'
+                    className='badge badge-warning'
                     onClick={() => onDecrement(product, history, auth)}>
                     -
                   </span>{' '}
@@ -63,6 +70,16 @@ const Cart = ({
             ))}
         </tbody>
       </table>
+
+      <div className='order-sec'>
+        <h4>
+          Total Amount : <span>$ {total}</span>
+        </h4>
+
+        <button className='btn btn-warning btn-lg' onClick={handleOrder}>
+          Buy Now
+        </button>
+      </div>
     </div>
   );
 };

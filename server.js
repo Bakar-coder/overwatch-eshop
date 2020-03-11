@@ -47,6 +47,7 @@ winston.add(winston.transports.File, {
 const users = require('./routes/users');
 const products = require('./routes/api/shop/products');
 const cart = require('./routes/api/shop/cart');
+const orders = require('./routes/api/shop/orders');
 const admin = require('./routes/api/admin/index');
 
 // =======================================================================================//
@@ -99,6 +100,7 @@ app.use(compression());
 app.use('/api/users', users);
 app.use('/api/products', products);
 app.use('/api/cart', cart);
+app.use('/api/orders', orders);
 app.use('/api/admin', admin);
 app.use(errors);
 
@@ -109,11 +111,16 @@ const { User } = require('./models/User');
 const { Product } = require('./models/Product');
 const Cart = require('./models/Cart');
 const CartItem = require('./models/Cart-Item');
+const Order = require('./models/Order');
+const OrderItem = require('./models/Order-Item');
 User.hasMany(Product);
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasOne(Cart);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
+User.hasMany(Order);
+Order.belongsTo(User);
+Order.belongsToMany(Product, { through: OrderItem });
 
 // =======================================================================================//
 //                     Synconize application with mysql database

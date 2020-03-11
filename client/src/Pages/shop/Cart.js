@@ -8,16 +8,22 @@ import { bindActionCreators } from 'redux';
 import {
   deleteCartItem,
   productDeccrement,
-  addToCart
+  addToCart,
+  submitOrder,
+  setAmount
 } from '../../state/actions';
 
 const ShoppingCart = ({
   cart,
   auth,
   addToCart,
+  total,
   deleteCartItem,
-  productDeccrement
+  productDeccrement,
+  submitOrder,
+  setAmount
 }) => {
+  if (cart.length > 0) setAmount(cart);
   return cart ? (
     <div className='section section-top'>
       {cart.length === 0 ? (
@@ -33,6 +39,8 @@ const ShoppingCart = ({
           addToCart={addToCart}
           productDeccrement={productDeccrement}
           deleteCartItem={deleteCartItem}
+          submitOrder={submitOrder}
+          total={total}
         />
       )}
     </div>
@@ -45,11 +53,12 @@ ShoppingCart.propTypes = {};
 
 const mapState = ({ auth, products }) => ({
   cart: products.cart,
-  auth: auth.isAuth
+  auth: auth.isAuth,
+  total: products.total
 });
 const mapDispatch = dispatch =>
   bindActionCreators(
-    { addToCart, deleteCartItem, productDeccrement },
+    { addToCart, deleteCartItem, productDeccrement, submitOrder, setAmount },
     dispatch
   );
 

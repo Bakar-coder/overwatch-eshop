@@ -1,13 +1,21 @@
 .btn {
-  padding: .6rem 1.4rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 4px;
   background: $light;
   font-size: inherit;
   cursor: pointer;
 
+  &-lg {
+    padding: 1.6rem 2.8rem;
+  }
+
   &-primary {
     background: $primary;
     color: $white;
+  }
+  &-warning {
+    background: $warning;
+    color: $black;
   }
 
   &-danger {

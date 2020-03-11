@@ -13,8 +13,8 @@ const Navbar = ({ user, cart, logoutUser, history }) => {
   const { isOpen } = state;
 
   const handleNavToggle = () => {
-    setState({ ...state, isOpen: !state.isOpen })
-  }
+    setState({ ...state, isOpen: !state.isOpen });
+  };
   return (
     <Fragment>
       <nav className='navbar'>
@@ -25,17 +25,11 @@ const Navbar = ({ user, cart, logoutUser, history }) => {
             </Link>
           </h3>
           {!isOpen && (
-            <IoMdMenu
-              className='menu'
-              onClick={() => handleNavToggle()}
-            />
+            <IoMdMenu className='menu' onClick={() => handleNavToggle()} />
           )}
 
           {isOpen && (
-            <IoMdClose
-              className='menu'
-              onClick={() => handleNavToggle()}
-            />
+            <IoMdClose className='menu' onClick={() => handleNavToggle()} />
           )}
 
           <ul className='list-group'>
@@ -76,6 +70,15 @@ const Navbar = ({ user, cart, logoutUser, history }) => {
               </Link>
             </li>
 
+            {user && user.admin && (
+              <li className='list-item'>
+                <Link
+                  to='/admin/orders'
+                  className={pathname === '/admin/orders' ? 'active' : ''}>
+                  Orders
+                </Link>
+              </li>
+            )}
             {user && user.admin && (
               <li className='list-item'>
                 <Link
