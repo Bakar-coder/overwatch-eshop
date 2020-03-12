@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 require('express-async-errors');
 const express = require('express');
 const { sequelize } = require('./utils/database');
@@ -49,6 +49,16 @@ const products = require('./routes/api/shop/products');
 const cart = require('./routes/api/shop/cart');
 const orders = require('./routes/api/shop/orders');
 const admin = require('./routes/api/admin/index');
+
+// =======================================================================================//
+//                               import models
+// =======================================================================================//
+const { User } = require('./models/User');
+const { Product } = require('./models/Product');
+const Cart = require('./models/Cart');
+const CartItem = require('./models/Cart-Item');
+const Order = require('./models/Order');
+const OrderItem = require('./models/Order-Item');
 
 // =======================================================================================//
 //                            filter image upload file types
@@ -105,14 +115,8 @@ app.use('/api/admin', admin);
 app.use(errors);
 
 // =======================================================================================//
-//                      import models and create table associations
+//                           create table associations
 // =======================================================================================//
-const { User } = require('./models/User');
-const { Product } = require('./models/Product');
-const Cart = require('./models/Cart');
-const CartItem = require('./models/Cart-Item');
-const Order = require('./models/Order');
-const OrderItem = require('./models/Order-Item');
 User.hasMany(Product);
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasOne(Cart);
