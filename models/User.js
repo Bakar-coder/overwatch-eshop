@@ -15,6 +15,8 @@ const User = sequelize.define('users', {
   email: { type: Sequelize.STRING(100), allowNull: false, unique: true, validate: {isEmail: true} },
   avatar: { type: Sequelize.STRING, allowNull: false },
   passwd: { type: Sequelize.STRING(100), allowNull: false },
+  resetToken: Sequelize.STRING(100),
+  resetTokenExpiration: Sequelize.DATE,
   is_admin: { type: Sequelize.BOOLEAN, defaultValue: false }
 });
 
