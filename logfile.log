@@ -1,0 +1,1 @@
+{"message":"getaddrinfo ENOTFOUND api.sendgrid.com","stack":"Error: getaddrinfo ENOTFOUND api.sendgrid.com\n    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:64:26)","errno":-3008,"code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"api.sendgrid.com","level":"error","timestamp":"2020-03-12T23:06:36.165Z"}

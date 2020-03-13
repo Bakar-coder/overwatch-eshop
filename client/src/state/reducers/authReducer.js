@@ -1,9 +1,10 @@
-import {SET_CURRENT, REMOVE_CURRENT} from '../types';
+import {SET_CURRENT, REMOVE_CURRENT, RESET_TOKEN} from '../types';
 import cookie from 'js-cookie';
 
 const authState = {
   user: null,
-  isAuth: false
+  isAuth: false,
+  resetToken: null
 };
 
 export default (state = authState, action) => {
@@ -23,6 +24,11 @@ export default (state = authState, action) => {
         user: null,
         isAuth: false
       };
+    case RESET_TOKEN:
+      return {
+        ...state,
+        resetToken: payload
+      }
     default:
       return state;
   }

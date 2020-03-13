@@ -155,9 +155,14 @@ a {
   min-height: 100vh;
   padding: 0 1em;
 
+
   @include respond(phone) {
-    padding: 0;
-  }
+
+
+    .padding_sm {
+      padding: auto 1em;
+    }
+  };
 
   &-top {
     padding-top: 7rem;
@@ -194,7 +199,7 @@ a {
 
 .badge {
   padding: 0.25rem 1.2rem;
-  font-size: inherit;
+  font-size: 1.4rem;
   background: $light;
   cursor: pointer;
 

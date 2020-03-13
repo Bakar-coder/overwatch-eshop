@@ -9,27 +9,55 @@
     max-width: 98%;
   }
 
+
   & .image-container {
-    height: 6rem;
-    width: 6rem;
+    vertical-align: middle;
+    border-style: none;
+    height: 10rem;
+    min-width: 10rem;
     position: relative;
   }
 }
 
 table {
+  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  background: $dark none repeat scroll 0 0;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  text-align: center;
   width: 100%;
-  border: 1px solid $dark;
+  margin-bottom: 0;
+  border: 2px solid $dark;
+
+  @include respond(phone) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  };
+
 
   & thead {
     border-bottom: 1px solid $dark;
+    background: $dark-light none repeat scroll 0 0;
     & > tr {
       padding: 2em;
     }
   }
 
   & th {
+    border-top: medium none;
+    font-size: 15px;
+    text-transform: capitalize;
+    padding: 20px 10px;
+    text-align: center;
+    font-weight: 500;
+    vertical-align: middle;
+    white-space: nowrap;
     color: $warning;
   }
 
@@ -37,6 +65,8 @@ table {
   & td {
     text-align: center;
     padding: 1.6rem;
+    border-bottom: 1px solid $dark-light;
+    border-right: 1px solid  $dark-light;
 
     @include respond(phone) {
       padding: 0.2rem;
@@ -49,12 +79,20 @@ table {
   }
 
   & td {
+    border-top: medium none;
+    padding: 20px 10px;
+    min-width: 2.5rem;
+    vertical-align: middle;
+    font-size: 13px;
+
+
     @include respond(phone) {
       padding-bottom: 3rem;
     }
   }
 
   & td:last-child {
+    min-width: 20.2rem;
     @include respond(phone) {
       span {
         margin-bottom: 1rem;

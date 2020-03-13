@@ -1,48 +1,31 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
-const Login = ({ loginUser, history, reqPasswordReset }) => {
+const Reset = ({ resetPassword, history, match }) => {
+  const { token } = match.params;
   const [user, setUser] = React.useState({
-    email: '',
-    passwd: ''
+    passwd: '',
+    token
   });
+
+
+  const handleFormSubmission = e => {
+    e.preventDefault();
+    resetPassword(user, history);
+  };
 
   const handleInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmission = e => {
-    e.preventDefault();
-    loginUser(user, history);
-  };
+  const { passwd } = user;
 
-  const handleReset = () => {
-    reqPasswordReset(user);
-  }
-
-  const { email, passwd } = user;
-
-  return (
-    <form onSubmit={handleFormSubmission} className='form'>
+  return token
+    ? (
+      <form onSubmit={handleFormSubmission} className='form'>
       <div className='form-title'>
-        <h3>Sign in</h3>
-        <p className='text-warning'>Login your account.</p>
-      </div>
-
-      <div className='form-group'>
-        <input
-          type='email'
-          className={email ? 'form-control text-warning' : 'form-control'}
-          id='email'
-          name='email'
-          value={email}
-          onChange={handleInputChange}
-          required
-          placeholder='Email Address'
-        />
-        <label className='form-label' id='email'>
-          {email && 'Email Address'}
-        </label>
+        <h3>Update Password</h3>
+        <p className='text-warning'>Reset your Password.</p>
       </div>
 
       <div className='form-group'>
@@ -83,19 +66,10 @@ const Login = ({ loginUser, history, reqPasswordReset }) => {
       </div>
 
       <button type='submit' className='btn btn-primary form-btn'>
-        Login
+        Reset
       </button>
-
-      <div className='reset'>
-      <p>
-        Not yet registered ? {'  '}
-        <Link to='/users/register' className='text-warning'>
-          REGISTER
-        </Link>
-      </p>
-      <p>Forgot Password ?{'  '} <Link to='#' className='text-warning' onClick={handleReset}>Reset.</Link></p></div>
     </form>
-  );
+    ): <Redirect to='/users/login'/>
 };
 
-export default withRouter(Login);
+export default withRouter(Reset);

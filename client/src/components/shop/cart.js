@@ -23,13 +23,15 @@ const Cart = ({
   console.log(total);
   return (
     <div className='cart'>
-      <table>
+    <div class="table-content table-responsive">
+      <table >
         <thead>
           <tr>
             <th>Image</th>
             <th>Title</th>
             <th>Qty</th>
             <th>Price</th>
+            <th>Total</th>
             <th />
           </tr>
         </thead>
@@ -48,6 +50,7 @@ const Cart = ({
                 <td>{product.title}</td>
                 <td>{product.cartItem.quantity}</td>
                 <td>{product.price}</td>
+                <td>{(product.cartItem.quantity * product.price).toFixed(2)}</td>
 
                 <td>
                   <span
@@ -70,6 +73,7 @@ const Cart = ({
             ))}
         </tbody>
       </table>
+      </div>
 
       <div className='order-sec'>
         <h4>

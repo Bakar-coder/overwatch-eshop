@@ -21,7 +21,7 @@ const Navbar = ({ user, cart, logoutUser, history }) => {
         <div className='navbar-content'>
           <h3 className='logo'>
             <Link to='/' className='active'>
-              TimeWatch
+              OverWatch
             </Link>
           </h3>
           {!isOpen && (

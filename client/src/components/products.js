@@ -7,15 +7,17 @@ import { bindActionCreators } from 'redux';
 const Products = ({ auth, products, addToCart }) => {
   return products ? (
     <main className='section' style={{ paddingTop: '5.5rem' }}>
-      <div className='grid'>
-        {products.map(product => (
-          <Product
-            product={product}
-            key={product.id}
-            addToCart={addToCart}
-            auth={auth}
-          />
-        ))}
+      <div className='padding_sm'>
+        <div className='grid'>
+          {products.map(product => (
+            <Product
+              product={product}
+              key={product.id}
+              addToCart={addToCart}
+              auth={auth}
+            />
+          ))}
+        </div>
       </div>
     </main>
   ) : null;

@@ -1,4 +1,4 @@
-import { SET_CURRENT, REMOVE_CURRENT } from '../types';
+import { SET_CURRENT, REMOVE_CURRENT, SET_ERROR, REMOVE_ERROR, RESET_TOKEN } from '../types';
 import Jwt from 'jwt-decode';
 import cookie from 'js-cookie';
 import setError from '../errorHandler';
@@ -54,3 +54,27 @@ export const logoutUser = () => async dispatch => {
     window.location = '/';
   }, 3000);
 };
+
+export const resetPassword = (user, history) => async (dispatch, getState, api) => {
+  try {
+    const {data} = await api.post('/api/users/new-password', user);
+    if (!data.success) return;
+    setAlert(data, dispatch);
+    return history.push('/users/login');
+  } catch (ex) {
+    setError(ex, dispatch);
+  }
+}
+
+export const reqPasswordReset = user => async (dispatch, getState, api) => {
+  try {
+    if (!user.email) {
+      setTimeout(() => dispatch({ type: REMOVE_ERROR }), 3000)
+      return dispatch({ type: SET_ERROR, payload: 'Enter your email address to reset password.' })
+    }
+      const { data } = await api.post('/api/users/reset', user );
+      setAlert(data, dispatch)
+  } catch (ex) {
+    setError(ex, dispatch);
+  }
+}

@@ -9,7 +9,7 @@ const HomePage = () => {
   const headerTags = () => (
     <Helmet>
       <title>
-        Over Watch | Get World's greatest Smart Watches | Digital Watch | Watch{' '}
+        Over Watch | Get World greatest Smart Watches | Digital Watch | Watch{' '}
       </title>
       <meta
         property='og:title'

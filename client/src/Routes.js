@@ -1,7 +1,8 @@
 import Home from './Pages/Home';
 import App from './App';
-import Register from './Pages/Signup';
-import Login from './Pages/Signin';
+import Register from './Pages/auth/Signup';
+import Login from './Pages/auth/Signin';
+import Reset from './Pages/auth/Reset';
 import AddProduct from './Pages/admin/add-product';
 import AdminProdocts from './Pages/admin/products';
 import EditProduct from './Pages/admin/edit-product';
@@ -57,6 +58,11 @@ const Routes = [
       {
         ...Login,
         path: '/users/login',
+        exact: true
+      },
+      {
+        ...Reset,
+        path: '/users/reset/:token',
         exact: true
       },
       {

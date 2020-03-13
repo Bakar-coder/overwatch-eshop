@@ -1,4 +1,4 @@
-import { registerUser, loginUser, setCurrent } from './authActions';
+import { registerUser, loginUser, setCurrent, resetPassword, reqPasswordReset } from './authActions';
 import {
   getProducts,
   deleteProduct,
@@ -15,6 +15,8 @@ export {
   registerUser,
   loginUser,
   setCurrent,
+  reqPasswordReset,
+  resetPassword,
   add_Product,
   getProducts,
   edit_Product,
@@ -25,5 +27,6 @@ export {
   productDeccrement,
   submitOrder,
   setAmount,
-  getOrders
+  getOrders,
+
 };

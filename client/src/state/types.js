@@ -1,6 +1,7 @@
 export const LOGIN_USER = 'LOGIN_USER';
 export const SET_CURRENT = 'SET_CURRENT';
 export const REMOVE_CURRENT = 'REMOVE_CURRENT';
+export const RESET_TOKEN = 'RESET_TOKEN';
 export const GET_USER = 'GET_USER';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCT = 'GET_PRODUCT';

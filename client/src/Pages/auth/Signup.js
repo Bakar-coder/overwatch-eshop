@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux'
-import Register from "../components/auth/register";
+import Register from "../../components/auth/register";
 import {bindActionCreators} from "redux";
-import {registerUser} from "../state/actions";
+import {registerUser} from "../../state/actions";
 
 const RegisterPage = ({registerUser}) => {
   return (

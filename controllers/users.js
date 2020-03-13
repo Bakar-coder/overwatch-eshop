@@ -64,7 +64,7 @@ exports.postRegister = async (req, res) => {
   user.passwd = await bcrypt.hash(user.passwd, salt);
   user = await user.save();
   await user.createCart();
-  const message = await transport.sendMail({
+  await transport.sendMail({
     to: user.email,
     from: 'OverWatch.com',
     subject: 'Account creation successful.',
@@ -87,12 +87,12 @@ exports.postLogin = async (req, res) => {
   if (!user)
     return res
       .status(400)
-      .json({ success: false, msg: 'Invalid email or password' });
+      .json({ success: false, msg: 'Invalid email address' });
   const validPassword = await bcrypt.compare(passwd, user.passwd);
   if (!validPassword)
     return res
       .status(400)
-      .json({ success: false, msg: 'Invalid email or password' });
+      .json({ success: false, msg: 'Invalid password' });
   user = {
     id: user.id,
     firstName: user.f_name,
@@ -122,27 +122,25 @@ exports.postLogin = async (req, res) => {
 exports.postReset = async (req, res) => {
   const { email } = req.body;
   const buffer = await crypto.randomBytes(32);
-  let token;
-  if (buffer) token = buffer.toString('hex');
-  if (!token) return;
+  const token = buffer.toString('hex');
   const user = await User.findOne({ where: {email} });
   if  (!user)
     return res
       .status(400)
-      .json({ success: false, msg: `No user with email ${email} found.`  });
+      .json({ success: false, msg: `Invalid Email Address - Enter the email you used to register`  });
   user.resetToken = token;
   user.resetTokenExpiration = Date.now() + 3600000;
   await user.save();
-  const message = await transport.sendMail({
+  const result = await transport.sendMail({
     to: email,
     from: 'OverWatch.com',
     subject: 'Password reset.',
     html: `
       <p>You requested for a password reset. </p>
-      <p>Click this to <a href='http://localhost:5000/api/users/reset/${token}'>Reset</a>. </p>
+      <p>Click this to <a href='http://localhost:3000/users/reset/${token}'>Reset</a>.</p>
     `
   })
-  res.json({ success: true, msg: 'we have sent a reset link to your email address.', message })
+  res.json({ success: true, msg: 'We have sent a reset password link to your email.'})
 }
 
 
@@ -150,15 +148,16 @@ exports.postReset = async (req, res) => {
 //                               New Password api end-point
 // =======================================================================================//
 exports.postNewPassword = async (req, res) => {
-  const {id, password, token } = req.body;
+  const { passwd, token } = req.body;
   const user = await User.findOne({ where: { resetToken: token } })
-  if (user && user.resetTokenExpiration > Date.now() && user.id === id) {
+
+  if (user && user.resetTokenExpiration > Date.now()) {
     const salt = await bcrypt.genSalt(12);
-    const newPassword = await bcrypt.hash(password, salt);
+    const newPassword = await bcrypt.hash(passwd, salt);
     user.passwd = newPassword;
     user.resetToken = undefined;
     user.resetTokenExpiration = undefined;
-    await user.save();
-    return res.json({ success: true, msg: 'Password reset successful.' })
+    const result = await user.save();
+    return res.json({ success: true, msg: 'Password reset successful.', result })
     }
   }
