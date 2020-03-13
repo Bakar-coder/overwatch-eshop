@@ -1,5 +1,6 @@
 const { Product, validateProduction } = require('../../models/Product');
 const  { deleteFile } = require('../../config/file');
+const io = require('../../socket');
 
 exports.postAddProduct = async (req, res) => {
   const { error } = validateProduction(req.body);
@@ -52,9 +53,10 @@ exports.postAddProduct = async (req, res) => {
       title,
       description,
       price,
-      image: image.originalname
+      image: image.filename
     });
     await product.save();
+    io.getIo().emit('products', { action: 'create', product });
     return res.json({
       success: true,
       msg: `added ${product.title} successfully.`

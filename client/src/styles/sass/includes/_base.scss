@@ -153,14 +153,14 @@ a {
 
 .section {
   min-height: 100vh;
-  padding: 0 1em;
+  width: 100vw;
 
 
   @include respond(phone) {
-
+    padding: auto;
 
     .padding_sm {
-      padding: auto 1em;
+
     }
   };
 

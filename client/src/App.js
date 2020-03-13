@@ -18,6 +18,8 @@ const App = ({
   setCurrent();
   auth && getCart();
 
+
+
   return (
     <Layout>
       {alert && <div className='alert alert-success'>{alert}</div>}

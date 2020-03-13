@@ -7,8 +7,10 @@ import AddProduct from './Pages/admin/add-product';
 import AdminProdocts from './Pages/admin/products';
 import EditProduct from './Pages/admin/edit-product';
 import Orders from './Pages/admin/orders';
+import Products from './Pages/shop/Products';
 import SingleProduct from './Pages/shop/SingleProduct';
 import Cart from './Pages/shop/Cart';
+import Checkout from './Pages/shop/Checkout';
 import PageNotFound from './Pages/404';
 
 const Routes = [
@@ -31,6 +33,11 @@ const Routes = [
         exact: true
       },
       {
+        ...Checkout,
+        path: '/checkout',
+        exact: true
+      },
+      {
         ...Orders,
         path: '/admin/orders',
         exact: true
@@ -43,6 +50,11 @@ const Routes = [
       {
         ...Cart,
         path: '/cart',
+        exact: true
+      },
+      {
+        ...Products,
+        path: '/products',
         exact: true
       },
       {

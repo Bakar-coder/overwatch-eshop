@@ -139,4 +139,6 @@ sequelize
 // =======================================================================================//
 //                         Start and Run the application
 // =======================================================================================//
-app.listen(port, () => console.log(`serving app on port: ${port}`));
+const server = app.listen(port, () => console.log(`serving app on port: ${port}`));
+const io = require('./socket').init(server);
+io.on('connection', socket => console.log('Connected Socket io.................'));

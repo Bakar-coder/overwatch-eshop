@@ -19,8 +19,7 @@ const Cart = ({
   const handleOrder = () => {
     submitOrder(history);
   };
-
-  console.log(total);
+  
   return (
     <div className='cart'>
     <div class="table-content table-responsive">
