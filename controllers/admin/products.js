@@ -1,4 +1,5 @@
 const { Product, validateProduction } = require('../../models/Product');
+const  { deleteFile } = require('../../config/file');
 
 exports.postAddProduct = async (req, res) => {
   const { error } = validateProduction(req.body);
@@ -71,8 +72,6 @@ exports.postAdminEditProduct = async (req, res) => {
     const { title, description, price, id } = req.body;
     const productId = Number(id);
     const image = req.file;
-    console.log(image);
-
     const imageSize = 1024 * 1024 * 5;
     if (image && image.size > imageSize)
       return console.log('Image size must not exceed 5Mbs');
@@ -80,7 +79,10 @@ exports.postAdminEditProduct = async (req, res) => {
     if (title) product.title = title;
     if (description) product.description = description;
     if (price) product.price = price;
-    if (image) product.image = image.originalname;
+    if (image) {
+      deleteFile(`client/src/images/${product.image}`);
+      product.image = image.originalname;
+    }
     await product.save();
     return res.json({
       success: true,
@@ -95,6 +97,7 @@ exports.postAdminDeleteProduct = async (req, res) => {
   if (req.user.is_admin) {
     const { id } = req.body;
     const product = await Product.findOne({ where: { id } });
+    product && deleteFile(`client/src/images/${product.image}`);
     await product.destroy();
     return res.json({
       success: true,
