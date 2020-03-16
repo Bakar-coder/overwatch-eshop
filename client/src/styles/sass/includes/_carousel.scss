@@ -7,6 +7,63 @@
   &__container {
     height: 100%;
     position: relative;
+
+    & .carousel__info {
+      z-index: 20;
+      position: absolute;
+      top: 45%;
+      left: 5%;
+      transform: translate(-5%, -45%);
+
+      @include respond(tab-port) {
+      text-align: center;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba($black, .8);
+      padding: 10%;
+      }
+
+      & .heading {
+        font-size: 6.2rem;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+
+          @include respond(tab-port) {
+            font-size: 4.2rem;
+           }
+
+        &__sub3 {
+          font-weight: normal;
+          font-size: 2.4rem;
+          display: block;
+        }
+
+        &__sub1 {
+          font-weight: normal;
+          display: block;
+          font-size: 2.8rem;
+        }
+
+        &__sub2 {
+          font-weight: 300;
+        }
+      }
+
+      & .btn {
+
+        &__main {
+          padding: 2.4rem 4.8rem;
+          background: $warning;
+
+          & a {
+            color: $black;
+          }
+
+        }
+      }
+    }
   }
 
   &__slide {

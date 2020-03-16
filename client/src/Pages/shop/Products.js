@@ -4,7 +4,7 @@ import Products from "../../components/products";
 
 const ProductsPage = props => {
   return (
-    <div className='section-top'>
+    <div className='section section-top'>
       <Products/>
     </div>
   );

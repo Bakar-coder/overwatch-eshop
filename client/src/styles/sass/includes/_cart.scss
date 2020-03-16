@@ -1,7 +1,6 @@
 .cart {
-  width: 95%;
   padding: 2rem;
-  margin: 3rem auto;
+  margin: auto;
   background: $dark-light;
 
   @include respond(phone) {
@@ -26,9 +25,7 @@ table {
   background: $dark none repeat scroll 0 0;
   border-radius: 0;
   border-style: solid;
-  border-width: 1px 0 0 1px;
   text-align: center;
-  width: 100%;
   margin-bottom: 0;
   border: 2px solid $dark;
 
@@ -59,6 +56,10 @@ table {
     vertical-align: middle;
     white-space: nowrap;
     color: $warning;
+
+    @include respond(phone) {
+      padding: 20px 10px !important;
+    }
   }
 
   & th,

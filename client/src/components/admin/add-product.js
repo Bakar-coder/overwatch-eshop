@@ -85,7 +85,7 @@ const AddProduct = ({ add_Product, history }) => {
           onChange={handleInputChange}
           required
           placeholder="Description"
-        ></textarea>
+        />
         <label className="form-label" id="description">
           {description && "Description"}
         </label>

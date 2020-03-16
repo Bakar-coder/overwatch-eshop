@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { renderRoutes } from 'react-router-config';
-import { connect } from 'react-redux';
-import Layout from './components/layouts/layouts';
-import { bindActionCreators } from 'redux';
-import { setCurrent, getProducts, getCart } from './state/actions';
+import React, { useEffect } from "react";
+import { renderRoutes } from "react-router-config";
+import { connect } from "react-redux";
+import Layout from "./components/layouts/layouts";
+import { bindActionCreators } from "redux";
+import { setCurrent, getProducts, getCart } from "./state/actions";
 
 const App = ({
   route,
@@ -18,12 +18,10 @@ const App = ({
   setCurrent();
   auth && getCart();
 
-
-
   return (
     <Layout>
-      {alert && <div className='alert alert-success'>{alert}</div>}
-      {error && <div className='alert alert-danger'>{error}</div>}
+      {alert && <div className="alert alert-success">{alert}</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
       {renderRoutes(route.routes)}
     </Layout>
   );
@@ -38,6 +36,9 @@ function mapDispatch(dispatch) {
 }
 
 export default {
-  component: connect(mapState, mapDispatch)(App),
+  component: connect(
+    mapState,
+    mapDispatch
+  )(App),
   loadData: ({ dispatch }) => dispatch(getProducts())
 };
