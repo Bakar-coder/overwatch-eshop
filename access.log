@@ -1,3 +1,0 @@
-::ffff:127.0.0.1 - - [13/Mar/2020:13:07:12 +0000] "GET /api/cart HTTP/1.1" 401 - "http://localhost:3000/users/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.78"
-::ffff:127.0.0.1 - - [13/Mar/2020:15:31:14 +0000] "GET /api/cart HTTP/1.1" 401 - "http://localhost:3000/users/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.78"
-::ffff:127.0.0.1 - - [13/Mar/2020:15:46:14 +0000] "POST /api/admin/add-product HTTP/1.1" 400 49 "http://localhost:3000/admin/add-product" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.78"
